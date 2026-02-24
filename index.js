@@ -36,6 +36,16 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-const humanselection = getHumanChoice();
-let computerSelection = getComputerChoice();
-playRound(humanselection, computerSelection);
+
+function playGame() {
+    const humanselection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanselection, computerSelection);
+}
+
+
+for (let i = 0; i < 4; i++) {
+    playGame();
+}
+
+alert("Final score: You " + humanScore + " - Computer " + computerScore);
