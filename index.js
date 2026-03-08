@@ -13,16 +13,11 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-    return prompt("Let's play rock paper scissors! Type your choice below:");
-}
-
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         alert("It's a tie! Both you and the computer chose " + humanChoice + ".");
-        computerScore++;
-        humanScore++;
+        // No score increment for tie
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
@@ -43,9 +38,32 @@ function playGame() {
     playRound(humanselection, computerSelection);
 }
 
+//alert("Final score: You " + humanScore + " - Computer " + computerScore);
 
-for (let i = 0; i < 4; i++) {
-    playGame();
-}
 
-alert("Final score: You " + humanScore + " - Computer " + computerScore);
+document.querySelector("#btn-1").addEventListener("click", () => {
+    const humanSelection = "rock";
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    document.getElementById("score").innerText = "You: " + humanScore + " Computer: " + computerScore;
+});
+
+document.querySelector("#btn-2").addEventListener("click", () => {
+    const humanSelection = "paper";
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    document.getElementById("score").innerText = "You: " + humanScore + " Computer: " + computerScore;
+});
+
+document.querySelector("#btn-3").addEventListener("click", () => {
+    const humanSelection = "scissors";
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    document.getElementById("score").innerText = "You: " + humanScore + " Computer: " + computerScore;
+});
+
+document.querySelector("#reset").addEventListener("click", () => {
+    humanScore = 0;
+    computerScore = 0;
+    document.getElementById("score").innerText = "You: " + humanScore + " Computer: " + computerScore;
+});                 
